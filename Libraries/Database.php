@@ -19,11 +19,11 @@ class Database
     public function __construct()
     {
         // Initialize database connection parameters from environment variables
-        $this->host = getenv('DB_HOST');
-        $this->port = getenv('DB_PORT');
-        $this->dbname = getenv('DB_DATABASE');
-        $this->user = getenv('DB_USERNAME');
-        $this->password = getenv('DB_PASSWORD');
+        $this->host = $_ENV['DB_HOST'];
+        $this->port = $_ENV['DB_PORT'];
+        $this->dbname = $_ENV['DB_DATABASE'];
+        $this->user = $_ENV['DB_USERNAME'];
+        $this->password = $_ENV['DB_PASSWORD'];
 
         try {
             // Construct DSN (Data Source Name) for connecting to PostgreSQL

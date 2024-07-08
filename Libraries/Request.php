@@ -16,7 +16,7 @@ class Request extends Controller
 
     public function __construct($protected = false, $requires_jwt = false)
     {
-        $this->jwtKey = getenv('JWT_SECRET'); // Fetch JWT secret from environment
+        $this->jwtKey = $_ENV['JWT_SECRET']; // Fetch JWT secret from environment
         $this->protected = $protected;
         $this->requires_jwt = $requires_jwt;
     }
@@ -117,7 +117,7 @@ class Request extends Controller
     {
         try {
             $issuedAt = time();
-            $expirationTime = $issuedAt + (3600 * getenv('JWT_EXP'));  // JWT expiration time (1 hour)
+            $expirationTime = $issuedAt + (3600 * $_ENV['JWT_EXP']);  // JWT expiration time (1 hour)
 
             $payload['iat'] = $issuedAt; // Issued at: time when the token was generated
             $payload['exp'] = $expirationTime; // Expiration time
